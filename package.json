@@ -1,0 +1,44 @@
+{
+  "name": "mempool-cache",
+  "version": "1.0.0",
+  "description": "Create static cache server for mempool instances",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayanamitech/mempool-cache.git"
+  },
+  "keywords": [
+    "mempool",
+    "bitcoin",
+    "explorer",
+    "cache"
+  ],
+  "files": [
+    "src"
+  ],
+  "author": "AyanamiTech <ayanami0330@protonmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayanamitech/mempool-cache/issues"
+  },
+  "homepage": "https://github.com/ayanamitech/mempool-cache#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "fastify": "^3.29.0",
+    "fastify-cors": "^6.1.0",
+    "fastify-static": "^4.7.0",
+    "p-queue-cjs": "7.2.0",
+    "qs": "^6.10.3",
+    "sharp": "^0.30.4",
+    "socks-proxy-agent": "^6.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "eslint": "^8.15.0",
+    "eslint-plugin-mocha": "^10.0.4",
+    "mocha": "^10.0.0"
+  }
+}
