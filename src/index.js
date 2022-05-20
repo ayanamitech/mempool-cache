@@ -8,7 +8,7 @@ const path = require('path');
 const fs = require('fs');
 
 const worker = require('./worker');
-const { setSafeInterval, getFailedLogs } = require('./lib');
+const { getFailedLogs } = require('./lib');
 
 /**
 const MempoolCache = () => {

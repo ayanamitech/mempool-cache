@@ -7,18 +7,12 @@
   "cache": {
     "donations": true,
     "contributors": true,
-    "translators": true,
-    "price": true,
-    "pools": true
+    "translators": true
   },
   "API": {
     "User-Agent": "https://raw.githubusercontent.com/Kikobeats/top-user-agents/master/index.json",
-    "github_raw": "https://raw.githubusercontent.com/mempool/mining-pools/master/pools.json",
-    "github_api": "https://api.github.com/repos/mempool/mining-pools/git/trees/master",
     "mempool": "https://mempool.space/api/v1",
     "mempool_onion": "http://mempoolhqx4isw62xs7abwphsq7ldayuidyx2v2oethdhhj6mlo2r6ad.onion/api/v1",
-    "price": "https://price.bisq.wiz.biz/getAllMarketPrices",
-    "price_onion": "http://wizpriceje6q5tdrxkyiazsgu7irquiqjy2dptezqhrtu7l2qelqktid.onion/getAllMarketPrices",
     "liquid": "https://liquid.network/api/v1",
     "liquid_onion": "http://liquidmom47f6s3m53ebfxn47p76a6tlnxib3wp6deux7wuzotdr6cyd.onion/api/v1"
   },

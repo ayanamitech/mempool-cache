@@ -5,14 +5,6 @@ const assert = require('assert').strict;
 
 const setDelay = (secs = 1) => new Promise(resolve => setTimeout(() => resolve(), secs * 1000));
 
-const setSafeInterval = (func, interval) => {
-  func()
-    .catch(console.error)
-    .finally(() => {
-      setTimeout(() => setSafeInterval(func, interval), interval)
-    });
-}
-
 const getLogName = (timestamp) => {
   try {
     let logNumber = 0;
@@ -88,7 +80,6 @@ const compareArray = (array1, array2) => {
 
 module.exports = {
   setDelay,
-  setSafeInterval,
   writeFailedLog,
   getFailedLogs,
   getProtocol,
