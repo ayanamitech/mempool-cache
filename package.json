@@ -30,7 +30,7 @@
     "fastify": "^3.29.0",
     "fastify-cors": "^6.1.0",
     "fastify-static": "^4.7.0",
-    "p-queue-cjs": "7.2.0",
+    "p-queue-cjs": "7.2.1",
     "qs": "^6.10.3",
     "sharp": "^0.30.4",
     "socks-proxy-agent": "^6.2.0"

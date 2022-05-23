@@ -65,7 +65,7 @@ const fetch = async ({ url, config, options }) => {
   while (retry < config.retryFetch) {
     try {
       const data = await axios(axiosOptions);
-      if (data.statusText !== 'OK' || data.data === undefined) {
+      if (data.statusText === 'error' || data.data === undefined) {
         throw new Error(`Could not fetch data from ${url}, Error: ${data.status}`);
       }
       if (data.config) {

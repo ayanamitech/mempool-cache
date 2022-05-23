@@ -17,7 +17,7 @@ const getLogName = (timestamp) => {
     console.log(e);
     return `./log/${timestamp}_0.txt`;
   }
-}
+};
 
 const writeFailedLog = (faillog, time) => {
   const timestamp = (time instanceof Date) ? time.getTime() : new Date().getTime();
@@ -29,7 +29,7 @@ const writeFailedLog = (faillog, time) => {
     console.error(`Failed to write error log as ${fileName}`);
     console.log(e);
   }
-}
+};
 
 const getFailedLogs = () => {
   const logPath = path.join(process.cwd(), './log');
@@ -39,7 +39,7 @@ const getFailedLogs = () => {
       return {
         count: 0,
         logs: {}
-      }
+      };
     }
     let logList = fs.readdirSync(logPath);
     // Exclude .gitignore
@@ -58,12 +58,12 @@ const getFailedLogs = () => {
     return {
       count: logCount.length,
       logs
-    }
+    };
   } catch (e) {
     console.log(`Failed to get failed logs from ${logPath}`);
     console.error(e);
   }
-}
+};
 
 const getProtocol = (url) => new URL(url).protocol.split(':')[0];
 
@@ -76,7 +76,7 @@ const compareArray = (array1, array2) => {
   } catch (e) {
     return false;
   }
-}
+};
 
 module.exports = {
   setDelay,
@@ -85,4 +85,4 @@ module.exports = {
   getProtocol,
   useOnionAddress,
   compareArray
-}
+};
