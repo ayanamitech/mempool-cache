@@ -1,9 +1,14 @@
+const agent = require('./agent');
 const syncMempool = require('./mempool');
 const syncLiquid = require('./liquid');
 
-const Worker = (config) => {
-  syncMempool(config);
-  syncLiquid(config);
+const Worker = async (config) => {
+  // Use popular user-agent for clearnet connection
+  if (config.SOCKS5PROXY.ENABLED !== true) {
+    config['User-Agent'] = await agent(config);
+  }
+  await syncMempool(config);
+  await syncLiquid(config);
   setInterval(() => syncMempool(config), config.runEverySec * 1000);
   setInterval(() => syncLiquid(config), config.runEverySec * 1000);
 };
