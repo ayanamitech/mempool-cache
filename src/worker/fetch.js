@@ -60,9 +60,9 @@ const fetch = async ({ url, config, options }) => {
   const userAgent = (config['User-Agent']) ? config['User-Agent'] : 'Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0';
   axiosOptions.headers = {
     'User-Agent': userAgent
-  }
+  };
 
-  while (retry < config.retryFetch) {
+  while (retry < config.fetch.retry) {
     try {
       const data = await axios(axiosOptions);
       if (data.statusText === 'error' || data.data === undefined) {
@@ -85,10 +85,10 @@ const fetch = async ({ url, config, options }) => {
       writeFailedLog(e, date);
       retry++;
     }
-    await setDelay(config.retryFetchOnSec);
+    await setDelay(config.fetch.retryOnSec);
   }
   return;
-}
+};
 
 const fetchImages = async (url, path, config) => {
   try {
@@ -97,7 +97,7 @@ const fetchImages = async (url, path, config) => {
       method: 'get',
       responseType: 'stream',
       timeout: 10000
-    }
+    };
     const writer = fs.createWriteStream(path);
     // Save to WebP format
     const convertWebp = sharp().toFormat('webp').webp({nearLossless:true});
@@ -114,7 +114,7 @@ const fetchImages = async (url, path, config) => {
     writeFailedLog(new Error(`Failed to write stream data for ${path}`), date);
     writeFailedLog(e, date);
   }
-}
+};
 
 module.exports = {
   fetch,

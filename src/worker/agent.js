@@ -13,6 +13,6 @@ const fetchAgent = async (config) => {
   }
   const randomAgent = agentList[crypto.randomInt(0, agentList.length -1)];
   return randomAgent;
-}
+};
 
 module.exports = fetchAgent;

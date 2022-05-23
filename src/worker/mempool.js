@@ -53,7 +53,7 @@ const syncDonations = async (config) => {
     return {
       donations: [],
       donationsQueue: []
-    }
+    };
   }
 };
 
@@ -104,7 +104,7 @@ const syncContributors = async (config) => {
     return {
       contributors: [],
       contributorsQueue: []
-    }
+    };
   }
 };
 
@@ -158,7 +158,7 @@ const syncTranslators = async (config) => {
     return {
       translators: [],
       translatorsQueue: []
-    }
+    };
   }
 };
 
@@ -278,7 +278,7 @@ const auditCache = (serverData, config) => {
 const syncMempool = async (config) => {
   config.publicDir = path.join(process.cwd(), 'public');
   config.mempool = useOnionAddress('mempool', config);
-  const queue = new PQueue({ concurrency: config.concurrency, intervalCap: config.intervalCap, interval: config.intervalSec * 1000 });
+  const queue = new PQueue({ concurrency: config.fetch.concurrency, intervalCap: config.fetch.intervalCap, interval: config.fetch.intervalSec * 1000 });
 
   if (!fs.existsSync(path.join(config.publicDir, './donations/images'))) {
     fs.mkdirSync(path.join(config.publicDir, './donations/images'), { recursive: true });
@@ -314,7 +314,7 @@ const syncMempool = async (config) => {
     await queue.addAll(totalQueue);
     totalQueue = auditCache(serverData, config);
     retry++;
-    if (retry > config.retryFetch) {
+    if (retry > config.fetch.retry) {
       break;
     }
   }

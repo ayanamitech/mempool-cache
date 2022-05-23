@@ -1,19 +1,11 @@
-const process = require('process');
-const path = require('path');
-const fs = require('fs');
+const syncMempool = require('./mempool');
+const syncLiquid = require('./liquid');
 
-const { writeFailedLog } = require('./lib');
-
-/**
-const getDonations =
-
-const UpdateCache = async (config) => {
-  try {
-
-
-  } catch (e) {
-    console.error(e);
-    writeFailedLog(e);
-  }
+const Worker = (config) => {
+  syncMempool(config);
+  syncLiquid(config);
+  setInterval(() => syncMempool(config), config.runEverySec * 1000);
+  setInterval(() => syncLiquid(config), config.runEverySec * 1000);
 }
-*//
+
+module.exports = Worker;

@@ -1,13 +1,17 @@
 {
-  "concurrency": 1,
-  "intervalCap": 50,
-  "intervalSec": 60,
-  "retryFetch": 10,
-  "retryFetchOnSec": 60,
+  "runEverySec": 3600,
   "cache": {
     "donations": true,
     "contributors": true,
-    "translators": true
+    "translators": true,
+    "liquid": true
+  },
+  "fetch": {
+    "concurrency": 1,
+    "intervalCap": 25,
+    "intervalSec": 60,
+    "retry": 5,
+    "retryOnSec": 60
   },
   "API": {
     "User-Agent": "https://raw.githubusercontent.com/Kikobeats/top-user-agents/master/index.json",
