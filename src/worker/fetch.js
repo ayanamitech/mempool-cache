@@ -34,28 +34,6 @@ const fetch = async ({ url, config, options }) => {
     axiosOptions.url = url;
   }
 
-  if (config.SOCKS5PROXY.ENABLED) {
-    const socksOptions = {
-      agentOptions: {
-        keepAlive: true,
-      },
-      hostname: config.SOCKS5PROXY.HOST,
-      port: config.SOCKS5PROXY.PORT
-    };
-
-    if (config.SOCKS5PROXY.USERNAME && config.SOCKS5PROXY.PASSWORD) {
-      socksOptions.username = config.SOCKS5PROXY.USERNAME;
-      socksOptions.password = config.SOCKS5PROXY.PASSWORD;
-    }
-
-    // Handle proxy agent for onion addresses
-    if (getProtocol(axiosOptions.url) === 'http') {
-      axiosOptions.httpAgent = new SocksProxyAgent(socksOptions);
-    } else {
-      axiosOptions.httpsAgent = new SocksProxyAgent(socksOptions);
-    }
-  }
-
   // Using Tor Browser's raw User-Agent as a default
   const userAgent = (config['User-Agent']) ? config['User-Agent'] : 'Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0';
   axiosOptions.headers = {
@@ -64,6 +42,28 @@ const fetch = async ({ url, config, options }) => {
 
   while (retry < config.fetch.retry) {
     try {
+      if (config.SOCKS5PROXY.ENABLED) {
+        const socksOptions = {
+          agentOptions: {
+            keepAlive: true,
+          },
+          hostname: config.SOCKS5PROXY.HOST,
+          port: config.SOCKS5PROXY.PORT
+        };
+
+        if (config.SOCKS5PROXY.USERNAME && config.SOCKS5PROXY.PASSWORD) {
+          socksOptions.username = config.SOCKS5PROXY.USERNAME;
+          socksOptions.password = config.SOCKS5PROXY.PASSWORD;
+        }
+
+        // Handle proxy agent for onion addresses
+        if (getProtocol(axiosOptions.url) === 'http') {
+          axiosOptions.httpAgent = new SocksProxyAgent(socksOptions);
+        } else {
+          axiosOptions.httpsAgent = new SocksProxyAgent(socksOptions);
+        }
+      }
+
       const data = await axios(axiosOptions);
       if (data.statusText === 'error' || data.data === undefined) {
         throw new Error(`Could not fetch data from ${url}, Error: ${data.status}`);
