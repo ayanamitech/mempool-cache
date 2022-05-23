@@ -49,7 +49,7 @@ const fetch = async ({ url, config, options }) => {
     }
 
     // Handle proxy agent for onion addresses
-    if (getProtocol(url) === 'http') {
+    if (getProtocol(axiosOptions.url) === 'http') {
       axiosOptions.httpAgent = new SocksProxyAgent(socksOptions);
     } else {
       axiosOptions.httpsAgent = new SocksProxyAgent(socksOptions);
