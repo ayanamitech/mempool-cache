@@ -26,7 +26,7 @@ const MempoolCache = () => {
         headers: ['DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type']
       };
       callback(null, corsOptions);
-    }
+    };
   });
   // Serve static data files
   app.register(fastifyStatic, {
@@ -92,6 +92,6 @@ const MempoolCache = () => {
     }
     console.log('Mempool Cache Server is now running on', address);
   });
-}
+};
 
 module.exports = MempoolCache;

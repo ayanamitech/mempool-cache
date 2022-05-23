@@ -6,6 +6,6 @@ const Worker = (config) => {
   syncLiquid(config);
   setInterval(() => syncMempool(config), config.runEverySec * 1000);
   setInterval(() => syncLiquid(config), config.runEverySec * 1000);
-}
+};
 
 module.exports = Worker;
