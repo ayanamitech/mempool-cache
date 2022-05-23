@@ -1,6 +1,8 @@
 const { loadConfig } = require('use-config-json');
 
 const defaultConfig = {
+  'port': 3300,
+  'listen': '127.0.0.1',
   'runEverySec': 3600,
   'cache': {
     'donations': true,
