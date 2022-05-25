@@ -1,7 +1,6 @@
 const fastify = require('fastify');
 const fastifyCors = require('@fastify/cors');
 const fastifyStatic = require('@fastify/static');
-const qs = require('qs');
 
 const process = require('process');
 const path = require('path');
@@ -12,9 +11,7 @@ const config = require('./config');
 
 const MempoolCache = () => {
   Worker(config);
-  const app = fastify({
-    querystringParser: str => qs.parse(str)
-  });
+  const app = fastify();
   const publicDir = path.join(process.cwd(), 'public');
   // Define CORS for requests from browser
   app.register(fastifyCors, () => {

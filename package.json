@@ -34,7 +34,6 @@
     "axios": "^0.27.2",
     "fastify": "^3.29.0",
     "p-queue-cjs": "7.2.1",
-    "qs": "^6.10.3",
     "sharp": "^0.30.4",
     "socks-proxy-agent": "^6.2.0",
     "use-config-json": "1.0.4"
