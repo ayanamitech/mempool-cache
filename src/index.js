@@ -22,7 +22,8 @@ const MempoolCache = () => {
   // Serve static data files for /api/v1
   app.register(fastifyStatic, {
     root: publicDir,
-    prefix: '/api/v1/'
+    prefix: '/api/v1/',
+    decorateReply: false // Fix "The decorator 'sendFile' has already been added!" error
   });
   // Return donations.json object
   app.get('/donations', router.donations);
