@@ -3,6 +3,7 @@ const syncMempool = require('./mempool');
 const syncLiquid = require('./liquid');
 
 const Worker = async (config) => {
+  console.log('Initializing Mempool Cache Worker...');
   // Use popular user-agent for clearnet connection
   if (config.SOCKS5PROXY.ENABLED !== true) {
     config['User-Agent'] = await agent(config);
